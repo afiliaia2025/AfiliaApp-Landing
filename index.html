@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <!-- SEO -->
+  <title>AfiliaApp — La app de tu sindicato en 7 días</title>
+  <meta name="description"
+    content="Crea la app de tu sindicato en menos de una semana. Gestiona afiliados, avisos, turnos, votaciones y documentos sin desarrollos a medida ni sobrecostes. Android y iPhone.">
+  <meta name="keywords"
+    content="app sindical, sindicato, afiliados, inteligencia artificial, convenios, permisos, turnos, votaciones, SaaS, España">
+  <meta name="author" content="AfiliaApp">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AfiliaApp — La app de tu sindicato en 7 días">
+  <meta property="og:description"
+    content="Crea la app de tu sindicato en menos de una semana. Gestiona afiliados, avisos, turnos y votaciones sin desarrollos ni sobrecostes.">
+  <meta property="og:image" content="https://afiliaia.com/images/moviles.webp">
+  <meta property="og:url" content="https://afiliaia.com">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AfiliaApp — La app de tu sindicato en 7 días">
+  <meta name="twitter:description"
+    content="Crea la app de tu sindicato en menos de una semana. Gestiona afiliados, avisos, turnos y votaciones sin desarrollos ni sobrecostes.">
+  <meta name="twitter:image" content="https://afiliaia.com/images/moviles.webp">
+
+  <!-- PWA / Mobile -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AfiliaApp">
+  <meta name="theme-color" content="#0A0E1A">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://afiliaia.com">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/logo64.webp">
+
+  <!-- Icons (versioned) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AfiliaApp",
+    "description": "App móvil para sindicatos. Gestiona afiliados, avisos, turnos, votaciones y documentos. Disponible en iOS y Android.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Plan Freemium gratuito disponible"
+    },
+    "url": "https://afiliaia.com",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AfiliaApp",
+      "url": "https://afiliaia.com"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo">
+        <img src="images/logo64.webp" alt="AfiliaApp Logo" style="width: 36px; height: 36px; border-radius: 8px;">
+        <div class="navbar__logo-text">
+          <span>Afilia</span><span>App</span>
+        </div>
+      </a>
+
+      <div class="navbar__links" id="navLinks">
+        <a href="#beneficios">Beneficios</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#faq">FAQ</a>
+        <a href="planes.html">Planes</a>
+      </div>
+
+      <div class="navbar__cta">
+        <a href="https://wa.me/34634427730?text=Hola%20soy%20[Nombre]%20del%20sindicato%20[XXX].%20Quiero%20info."
+          target="_blank" rel="noopener"
+          style="color: #25D366; font-size: 1.4rem; display: flex; align-items: center; margin-right: 12px;"
+          title="WhatsApp">
+          <i class="ph ph-whatsapp-logo"></i>
+        </a>
+        <a href="#" onclick="openDemoModal(event)" class="btn btn--primary btn--small">Solicitar demo</a>
+      </div>
+
+      <div class="hamburger" id="hamburger" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+
+
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+
+          <h1 class="headline headline--xl hero__title fade-in delay-1">
+            La app de tu sindicato<br>
+            <span class="text-orange">en 7 días</span>
+          </h1>
+
+          <p class="subtitle hero__subtitle fade-in delay-2">
+            La mayoría de sindicatos gestionan sus afiliados con un grupo de WhatsApp y un Excel.
+            Tus afiliados merecen más — y tú también.
+          </p>
+
+          <div class="hero__ctas fade-in delay-3">
+            <a href="#" onclick="openDemoModal(event)" class="btn btn--primary btn--large">
+              <i class="ph ph-rocket-launch"></i> Empieza gratis &mdash; 1 mes Premium
+            </a>
+          </div>
+
+          <p class="fade-in delay-4" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
+            <i class="ph ph-gift" style="color:#22C55E"></i> 1 mes gratis &nbsp;·&nbsp;
+            <i class="ph ph-check" style="color:#22C55E"></i> Sin permanencia &nbsp;·&nbsp;
+            <i class="ph ph-headset" style="color:#22C55E"></i> Soporte incluido
+          </p>
+        </div>
+
+        <div class="hero__visual fade-in-right delay-2">
+          <div class="hero__phone-mockup">
+            <img src="images/moviles_planes.webp"
+              alt="App sindical AfiliaApp mostrando el panel de home, turnos y soporte en smartphones">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-proof" id="social-proof">
+    <div class="container">
+      <div class="social-proof__inner">
+        <div class="social-proof__metric fade-in">
+          <div class="social-proof__number" data-count="5" data-suffix="+">0</div>
+          <div class="social-proof__label">Sindicatos activos</div>
+        </div>
+        <div class="social-proof__divider"></div>
+        <div class="social-proof__metric fade-in delay-1">
+          <div class="social-proof__number" data-count="2000" data-suffix="+">0</div>
+          <div class="social-proof__label">Afiliados gestionados</div>
+        </div>
+        <div class="social-proof__divider"></div>
+        <div class="social-proof__metric fade-in delay-2">
+          <div class="social-proof__number" data-count="7">0</div>
+          <div class="social-proof__label">Días de implantación</div>
+        </div>
+        <div class="social-proof__divider"></div>
+        <div class="social-proof__metric fade-in delay-3">
+          <div class="social-proof__number" data-count="0" data-suffix="€">0</div>
+          <div class="social-proof__label">Coste de alta</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dolor" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="container">
+      <div class="section__header fade-in" style="margin-bottom: 40px;">
+        <h2 class="headline headline--lg">¿Te <span class="text-orange">reconoces</span> en esto?</h2>
+        <p class="subtitle">Cada semana, miles de delegados sindicales viven esto</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 780px; margin: 0 auto 40px;"
+        class="pain-grid">
+        <div class="pain-item fade-in delay-1">
+          <i class="ph ph-x-circle" style="color:#ef4444; font-size:1.3rem; flex-shrink:0;"></i>
+          <span>Mandas circulares y <strong>nadie las lee</strong></span>
+        </div>
+        <div class="pain-item fade-in delay-1">
+          <i class="ph ph-x-circle" style="color:#ef4444; font-size:1.3rem; flex-shrink:0;"></i>
+          <span>Tu sindicato parece <strong>anticuado</strong> y los jóvenes no se afilian</span>
+        </div>
+        <div class="pain-item fade-in delay-2">
+          <i class="ph ph-x-circle" style="color:#ef4444; font-size:1.3rem; flex-shrink:0;"></i>
+          <span>Gestionas 200 afiliados con <strong>WhatsApp y un Excel</strong></span>
+        </div>
+        <div class="pain-item fade-in delay-2">
+          <i class="ph ph-x-circle" style="color:#ef4444; font-size:1.3rem; flex-shrink:0;"></i>
+          <span>Respondes las <strong>mismas preguntas</strong> una y otra vez</span>
+        </div>
+        <div class="pain-item fade-in delay-3">
+          <i class="ph ph-x-circle" style="color:#ef4444; font-size:1.3rem; flex-shrink:0;"></i>
+          <span>Tus afiliados <strong>no ven lo que haces</strong> por ellos y se van</span>
+        </div>
+        <div class="pain-item fade-in delay-3">
+          <i class="ph ph-x-circle" style="color:#ef4444; font-size:1.3rem; flex-shrink:0;"></i>
+          <span>Pierdes horas <strong>fuera de tu jornada</strong> en tareas administrativas</span>
+        </div>
+      </div>
+      <div class="fade-in delay-4" style="text-align:center; max-width: 600px; margin: 0 auto;">
+        <p style="font-size:1.1rem; color:var(--text-secondary); line-height:1.7;">
+          AfiliaApp pone fin a todo eso. <strong style="color:#fff;">Una app con tu marca, lista en 7 días,</strong>
+          que mantiene a tus afiliados informados, comprometidos y orgullosos de su sindicato.
+        </p>
+        <a href="#" onclick="openDemoModal(event)" class="btn btn--primary"
+          style="margin-top:24px; display:inline-flex;">
+          <i class="ph ph-rocket-launch"></i> Quiero solucionar esto
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2 class="headline headline--lg">Tu app sindical <span class="text-orange">en menos de 7 días</span></h2>
+      </div>
+
+      <div class="timeline__inner">
+        <div class="timeline__steps">
+          <div class="timeline__step fade-in-left delay-1">
+            <div class="timeline__step-number">1</div>
+            <div class="timeline__step-content">
+              <h4>Configuración de marca</h4>
+              <p>Activamos tu espacio con tu logo, colores y nombre del sindicato.</p>
+            </div>
+          </div>
+
+          <div class="timeline__step fade-in-left delay-2">
+            <div class="timeline__step-number">2</div>
+            <div class="timeline__step-content">
+              <h4>Importamos tus afiliados</h4>
+              <p>Nos mandas tu Excel y lo cargamos nosotros. En minutos tienes a todos tus afiliados en la app, con
+                acceso verificado y sin que hagas nada técnico.</p>
+            </div>
+          </div>
+
+          <div class="timeline__step fade-in-left delay-3">
+            <div class="timeline__step-number">3</div>
+            <div class="timeline__step-content">
+              <h4>Carga de contenido</h4>
+              <p>Cargas documentos, FAQs y primeros avisos con nuestra guía.</p>
+            </div>
+          </div>
+
+          <div class="timeline__step fade-in-left delay-4">
+            <div class="timeline__step-number">4</div>
+            <div class="timeline__step-content">
+              <h4>Lanzamiento</h4>
+              <p>Lanzamiento a la afiliación con soporte incluido.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in-right delay-2">
+          <div class="timeline__visual-card" style="padding: 0; overflow: hidden; border-radius: 16px;">
+            <img loading="lazy" src="images/mujer_movil.webp" alt="Mujer configurando la app del sindicato en su móvil"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+
+          <div class="timeline__highlights">
+            <div class="timeline__highlight">
+              <i class="ph ph-check-circle timeline__highlight-icon"></i>
+              <span>Sin esperas, sin costes ocultos, sin técnicos.</span>
+            </div>
+            <div class="timeline__highlight">
+              <i class="ph ph-check-circle timeline__highlight-icon"></i>
+              <span>Soporte incluido durante todo el proceso.</span>
+            </div>
+            <div class="timeline__highlight">
+              <i class="ph ph-check-circle timeline__highlight-icon"></i>
+              <span>Y mejoras continuas sin coste adicional.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="beneficios">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2 class="headline headline--lg">Beneficios <span class="text-orange">inmediatos</span></h2>
+        <p class="subtitle">Todo lo que tu sindicato necesita desde el primer día</p>
+      </div>
+
+      <div class="benefits__grid">
+        <div class="benefit-card fade-in delay-1">
+          <i class="ph ph-palette benefit-card__icon"></i>
+          <h3 class="benefit-card__title">Tu imagen, tu app</h3>
+          <p class="benefit-card__desc">Logo, colores y nombre del sindicato en toda la experiencia. Tu marca visible en
+            cada pantalla.</p>
+        </div>
+
+        <div class="benefit-card fade-in delay-2">
+          <i class="ph ph-package benefit-card__icon"></i>
+          <h3 class="benefit-card__title">Todo en un sitio</h3>
+          <p class="benefit-card__desc">Avisos, normativa, turnos, beneficios y ayuda centralizada para tus afiliados.
+          </p>
+        </div>
+
+        <div class="benefit-card fade-in delay-3">
+          <i class="ph ph-chat-circle-text benefit-card__icon"></i>
+          <h3 class="benefit-card__title">Menos llamadas repetidas</h3>
+          <p class="benefit-card__desc">FAQ y modelos claros, siempre a mano. Reduce consultas recurrentes con
+            información accesible.</p>
+        </div>
+
+        <div class="benefit-card fade-in delay-1">
+          <i class="ph ph-check-circle benefit-card__icon"></i>
+          <h3 class="benefit-card__title">Sin complicaciones técnicas</h3>
+          <p class="benefit-card__desc">Lo gestionáis desde un panel sencillo. No necesitas conocimientos técnicos ni
+            personal IT.</p>
+        </div>
+
+        <div class="benefit-card fade-in delay-2">
+          <i class="ph ph-device-mobile benefit-card__icon"></i>
+          <h3 class="benefit-card__title">Android y iPhone</h3>
+          <p class="benefit-card__desc">Notificaciones push para lo importante. App nativa disponible en ambas
+            plataformas.</p>
+        </div>
+
+        <div class="benefit-card fade-in delay-3">
+          <i class="ph ph-arrows-clockwise benefit-card__icon"></i>
+          <h3 class="benefit-card__title">Mejoras sin sobrecostes</h3>
+          <p class="benefit-card__desc">Evoluciona sin sorpresas en la factura. Nuevas funciones incluidas en tu plan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section security" id="seguridad">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2 class="headline headline--lg">Seguridad y <span class="text-orange">control</span></h2>
+      </div>
+
+      <div class="security__card fade-in">
+        <div class="security__grid">
+          <div class="security__item">
+            <i class="ph ph-lock-key security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Acceso restringido a afiliados activos</h4>
+              <p class="security__item-desc">Lista blanca/ID y bloqueo de no afiliados.</p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-desktop security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Panel privado para editar y auditar</h4>
+              <p class="security__item-desc">Traslado del caso con resumen y contacto.</p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-clipboard-text security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">RGPD/LOPDGDD: datos seguros y trazables</h4>
+              <p class="security__item-desc">Aviso legal y aceptación guardada.</p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-cloud security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Infraestructura sobre Google</h4>
+              <p class="security__item-desc">Comunicación cifrada HTTPS/TLS, infraestructura cloud de nivel empresarial.
+              </p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-folder security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Datos separados por sindicato</h4>
+              <p class="security__item-desc">Aislamiento total: cada sindicato solo ve sus propios datos.</p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-flag security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Soporte en español personalizado</h4>
+              <p class="security__item-desc">Plantillas y configuración asistida cuando apliquen.</p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-export security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Registro exportable</h4>
+              <p class="security__item-desc">Trazabilidad de estado y términos.</p>
+            </div>
+          </div>
+
+          <div class="security__item">
+            <i class="ph ph-shield-check security__item-icon"></i>
+            <div>
+              <h4 class="security__item-title">Privacidad práctica</h4>
+              <p class="security__item-desc">Minimización de datos y borrado bajo solicitud.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="why__note fade-in">
+        <em>Algunas funciones avanzadas son opcionales y se activan bajo presupuesto según el proyecto.</em>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="votaciones">
+    <div class="container">
+      <div class="votaciones__inner">
+        <div class="votaciones__visual fade-in-left" style="padding: 0; overflow: hidden; border-radius: 16px;">
+          <img loading="lazy" src="images/afiliado.webp" alt="Delegado sindical usando AfiliaApp en su móvil"
+            style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+        <div class="fade-in-right">
+          <h2 class="headline headline--lg">Votaciones y <span class="text-orange">encuestas</span></h2>
+          <p class="subtitle" style="margin-top: 16px;">
+            Consulta a la afiliación en minutos: un voto por persona, anónimo o nominal,
+            apertura/cierre programados y resultados en tiempo real.
+          </p>
+
+          <div class="votaciones__list">
+            <div class="votaciones__list-item">
+              <i class="ph ph-check-circle votaciones__list-icon"></i>
+              <span><strong>Acceso solo a afiliados verificados</strong></span>
+            </div>
+            <div class="votaciones__list-item">
+              <i class="ph ph-bell-ringing votaciones__list-icon"></i>
+              <span><strong>Recordatorios push, quórum y segmentación</strong></span>
+            </div>
+            <div class="votaciones__list-item">
+              <i class="ph ph-clipboard-text votaciones__list-icon"></i>
+              <span><strong>Tipos: Sí/No, múltiple, escala 1–5, fecha, respuesta corta</strong></span>
+            </div>
+            <div class="votaciones__list-item">
+              <i class="ph ph-chart-bar votaciones__list-icon"></i>
+              <span><strong>Exportación CSV/PDF y trazabilidad</strong></span>
+            </div>
+          </div>
+
+          <p class="votaciones__note">
+            <em>Nota: consultas internas que no sustituyen procesos electorales oficiales.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="web-corporativa">
+    <div class="container">
+      <div class="votaciones__inner" style="align-items: center;">
+
+        <div class="fade-in-left">
+          <img loading="lazy" src="images/web_aslan_mockup.webp"
+            alt="Web corporativa del sindicato ASLAN mostrada en un iMac Apple"
+            style="width: 100%; max-width: 500px; border-radius: 16px; display: block;">
+        </div>
+
+        <div class="fade-in-right">
+          <h2 class="headline headline--lg">¿Tu web está <span class="text-orange">anticuada</span>?<br>¿O aún no
+            tienes?
+          </h2>
+          <p class="subtitle" style="margin-top: 16px;">
+            Diseñamos la web corporativa de tu sindicato conectada directamente
+            a los datos de tu app: noticias, documentos, contactos y más.
+            <strong style="color: #fff;">Todo actualizado automáticamente</strong> sin duplicar trabajo.
+          </p>
+
+          <div class="votaciones__list" style="margin-top: 24px;">
+            <div class="votaciones__list-item">
+              <i class="ph ph-check-circle votaciones__list-icon"></i>
+              <span><strong>Diseño moderno y responsivo</strong> — adaptada a móvil, tablet y escritorio</span>
+            </div>
+            <div class="votaciones__list-item">
+              <i class="ph ph-check-circle votaciones__list-icon"></i>
+              <span><strong>Sincronizada con tu app</strong> — las noticias que publicas en la app aparecen en la
+                web</span>
+            </div>
+            <div class="votaciones__list-item">
+              <i class="ph ph-check-circle votaciones__list-icon"></i>
+              <span><strong>Sin mantenimiento técnico</strong> — nosotros nos encargamos de todo</span>
+            </div>
+            <div class="votaciones__list-item">
+              <i class="ph ph-check-circle votaciones__list-icon"></i>
+              <span><strong>Tu dominio, tu marca</strong> — web con el nombre y la imagen de tu sindicato</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px;">
+            <a href="https://wa.me/34634427730?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20web%20corporativa%20para%20mi%20sindicato."
+              class="btn btn--primary" target="_blank" rel="noopener" style="font-size: 0.9rem;">
+              <i class="ph ph-whatsapp-logo"></i> Pregúntanos sin compromiso
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="planes">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2 class="headline headline--lg">Tu sindicato digital <span class="text-orange">desde 0€</span></h2>
+        <p class="subtitle">Sin coste de desarrollo. Sin permanencia larga. Paga solo por lo que necesitas.</p>
+      </div>
+
+      <div style="display: grid; gap: 20px; margin-top: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+
+        <!-- Freemium -->
+        <div class="pricing-card fade-in delay-1" style="padding: 20px 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h3 class="pricing-card__name" style="margin: 0; font-size: 1.1rem;">Freemium</h3>
+              <p style="margin: 2px 0 0; color: var(--text-muted); font-size: 0.8rem;">Presencia digital básica</p>
+            </div>
+            <div class="pricing-card__price" style="margin: 0; min-width: 130px; text-align: right;">
+              <span class="pricing-card__amount" style="font-size: 1.5rem;">0€</span>
+              <span class="pricing-card__period">/mes</span>
+            </div>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 8px;">
+            50 afiliados · 4 avisos/mes · Tu marca · Soporte email
+          </p>
+        </div>
+
+        <!-- Básico -->
+        <div class="pricing-card fade-in delay-2" style="padding: 20px 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h3 class="pricing-card__name" style="margin: 0; font-size: 1.1rem;">Básico</h3>
+              <p style="margin: 2px 0 0; color: var(--text-muted); font-size: 0.8rem;">Para sindicatos que dan el primer
+                paso</p>
+            </div>
+            <div class="pricing-card__price" style="margin: 0; min-width: 130px; text-align: right;">
+              <span class="pricing-card__amount" style="font-size: 1.5rem;">0,20€</span>
+              <span class="pricing-card__period">/afil/mes</span>
+            </div>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 8px;">
+            300 afiliados · 8 avisos/mes · Carné QR · 1 admin + 1 delegado
+          </p>
+        </div>
+
+        <!-- Estándar -->
+        <div class="pricing-card fade-in delay-2" style="padding: 20px 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h3 class="pricing-card__name" style="margin: 0; font-size: 1.1rem;">Estándar</h3>
+              <p style="margin: 2px 0 0; color: var(--text-muted); font-size: 0.8rem;">Para sindicatos activos</p>
+            </div>
+            <div class="pricing-card__price" style="margin: 0; min-width: 130px; text-align: right;">
+              <span class="pricing-card__amount" style="font-size: 1.5rem;">0,30€</span>
+              <span class="pricing-card__period">/afil/mes</span>
+            </div>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 8px;">
+            Ilimitados · 15 avisos/mes · Carné QR · Alta digital · Import CSV · Chat delegado
+          </p>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card fade-in delay-3" style="padding: 20px 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h3 class="pricing-card__name" style="margin: 0; font-size: 1.1rem;">Premium</h3>
+              <p style="margin: 2px 0 0; color: var(--text-muted); font-size: 0.8rem;">Todo Estándar + IA incluida</p>
+            </div>
+            <div class="pricing-card__price" style="margin: 0; min-width: 130px; text-align: right;">
+              <span class="pricing-card__amount" style="font-size: 1.5rem;">0,45€</span>
+              <span class="pricing-card__period">/afil/mes</span>
+            </div>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 8px;">
+            Todo Estándar + IA Normativa · Chat · Votaciones · Encuestas · Delegados ilimitados
+          </p>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 28px;">
+        <a href="planes.html" class="btn btn--primary btn--large" style="font-size: 1rem;">
+          <i class="ph ph-arrow-right"></i> Ver comparativa completa y calculadora
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section__header fade-in">
+        <h2 class="headline headline--lg">Preguntas <span class="text-orange">frecuentes</span></h2>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq__item fade-in">
+          <div class="faq__question">
+            ¿Cuánto tarda en estar lista la app de mi sindicato?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              En menos de <strong>7 días</strong> puedes tener tu app con todo el contenido listo.
+              Nosotros nos encargamos de la configuración técnica; tú te encargas del contenido
+              y te guiamos en cada paso.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-1">
+          <div class="faq__question">
+            ¿Necesito técnicos o programadores?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              No. La app se gestiona desde un panel de administración intuitivo. Cualquier persona
+              del sindicato puede publicar avisos, subir documentos o lanzar encuestas sin conocimientos técnicos.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-2">
+          <div class="faq__question">
+            ¿Funciona en iOS y Android?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              Sí. Los afiliados se descargan la app <strong>AfiliaApp</strong> desde Google Play (Android)
+              o App Store (iPhone/iPad). Una vez instalada, la propia app les guía paso a paso para darse
+              de alta en su sindicato de forma rápida y sencilla, sin necesitar ayuda técnica.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-3">
+          <div class="faq__question">
+            ¿Hay permanencia o compromiso largo?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              El compromiso mínimo es de 3 meses para los planes de pago (Estándar y Premium).
+              Después, puedes cancelar en cualquier momento sin penalización. El plan Freemium
+              no tiene ningún compromiso ni requiere tarjeta de crédito.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-4">
+          <div class="faq__question">
+            ¿Puedo probar sin compromiso?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              Sí. El <strong>primer mes es completamente gratis</strong> con todas las funciones de
+              <strong>Premium</strong> desbloqueadas para que lo pruebes con tu afiliación real.
+              Al terminar el periodo de prueba, eliges el plan que mejor se adapta a tu sindicato
+              (Básico, Estándar o Premium). Si decides no contratar ninguno, la app pasa
+              automáticamente a la versión <strong>Freemium</strong> gratuita, sin cargos ni permanencia.
+              También ofrecemos demos personalizadas para verlo en acción antes de decidir.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-1">
+          <div class="faq__question">
+            ¿Cómo se importan los afiliados?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              Puedes importar tu listado de afiliados mediante un archivo CSV o Excel.
+              Nosotros te ayudamos con la primera carga. Después, puedes dar de alta nuevos afiliados
+              uno a uno desde el panel o permitir que se registren directamente desde la app con verificación.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-2">
+          <div class="faq__question">
+            ¿Qué diferencia hay entre Estándar y Premium?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              El plan <strong>Estándar</strong> incluye todo lo necesario: afiliados ilimitados, comunicación,
+              carné QR, alta digital, beneficios, turnos de lectura y chat con delegado.
+              El plan <strong>Premium</strong> añade IA Normativa, votaciones formales, encuestas internas,
+              delegados ilimitados por zona, segmentación avanzada y analítica con exportación.
+              <a href="planes.html" style="color: var(--orange); text-decoration: underline;">Ver comparativa completa
+                →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-3">
+          <div class="faq__question">
+            ¿Puedo tener varios administradores o delegados?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              Sí. En el plan Estándar puedes tener 1 administrador y 2 delegados.
+              En el plan Premium, el número de delegados es ilimitado y se pueden organizar por zonas
+              o áreas. Cada rol tiene permisos diferenciados para gestionar contenidos y comunicaciones.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-4">
+          <div class="faq__question">
+            ¿Es compatible con RGPD y LOPDGDD?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              Sí. La plataforma incluye aviso legal, registro de aceptación, minimización de datos
+              y opción de borrado bajo solicitud. Los datos de cada sindicato están aislados y alojados
+              en infraestructura Google Cloud con servidores en la UE.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-1">
+          <div class="faq__question">
+            ¿Qué pasa con mis datos si cancelo?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              Antes de cancelar puedes exportar todos tus datos (afiliados, documentos, historial) en formato CSV.
+              Tras la cancelación, mantenemos tus datos durante 30 días por si cambias de opinión.
+              Después se eliminan de forma segura y definitiva.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-2">
+          <div class="faq__question">
+            ¿Qué pasa si necesito una función que no está incluida?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              La plataforma evoluciona constantemente con nuevas funciones que se añaden sin coste adicional
+              a tu plan. Si necesitas algo específico, hablamos contigo para valorar su incorporación.
+              Muchas funciones nuevas han nacido de peticiones de nuestros sindicatos.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item fade-in delay-3">
+          <div class="faq__question">
+            ¿Qué incluye la IA?
+            <span class="faq__arrow">▼</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              La IA permite que cualquier afiliado consulte <strong>toda la documentación del sindicato
+                las 24 horas, los 7 días de la semana</strong> —convenios, reglamentos, circulares— sin
+              esperar a que un delegado esté disponible. Se basa en el <strong>perfil del afiliado</strong>
+              para personalizar las respuestas y siempre añade <strong>citas exactas</strong> del documento
+              fuente para que quede constancia del origen.
+              <br><br>
+              Está <strong>incluida en el plan Premium</strong>. Los sindicatos con plan
+              <strong>Estándar</strong> también pueden activarla como opción adicional.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-final" id="contacto">
+    <div class="container">
+      <div class="cta-final__content fade-in">
+        <h2 class="headline headline--lg">¿Listo para dar el salto <span class="text-orange">digital</span>?</h2>
+        <p class="subtitle">Solicita una demo gratuita y descubre cómo <span
+            style="color: var(--orange); font-weight: 700;">Afilia</span><span
+            style="color: #fff; font-weight: 700;">App</span> puede transformar<br>la comunicación
+          con tus afiliados.</p>
+
+        <div class="cta-final__buttons">
+          <a href="https://wa.me/34696913416?text=Hola%20soy%20[Nombre]%20del%20sindicato%20[XXX].%20Quiero%20una%20demo%20de%20AfilIA."
+            class="btn btn--primary btn--large" target="_blank" rel="noopener">
+            <i class="ph ph-whatsapp-logo"></i> WhatsApp
+          </a>
+          <a href="#" onclick="openDemoModal(event)" class="btn btn--outline btn--large">
+            <i class="ph ph-play-circle"></i> Solicitar demo
+          </a>
+        </div>
+        <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.85rem;">
+          <i class="ph ph-phone" style="color: var(--orange);"></i>
+          O llámanos al <a href="tel:+34696913416"
+            style="color: var(--orange); font-weight: 600; text-decoration: none;">634 427 730</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__left">
+          <i class="ph ph-lightning" style="color: var(--orange); font-size: 1.2rem;"></i>
+          <div>
+            <span>© 2026 <span style="color: var(--orange); font-weight: 700;">Afilia</span><span
+                style="font-weight: 700;">App</span> · Desarrollado en España · Todos los derechos
+              reservados.</span><br>
+            <span style="font-size:0.8rem; color:var(--text-muted);">AfiliaApp · <a href="mailto:contacto@afiliaapp.com"
+                style="color:var(--text-muted);">contacto@afiliaapp.com</a></span>
+          </div>
+        </div>
+        <div class="footer__links">
+          <a href="/privacidad">Política de privacidad</a>
+          <a href="mailto:contacto@afiliaapp.com">contacto@afiliaapp.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== DEMO MODAL ========== -->
+  <div class="modal-overlay" id="demoModal" onclick="handleModalOverlayClick(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" onclick="closeDemoModal()" aria-label="Cerrar">
+        <i class="ph ph-x"></i>
+      </button>
+      <h2 class="modal__title" id="modalTitle">Solicitar <span>demo</span></h2>
+      <p class="modal__subtitle">Te respondemos en menos de 24h. Sin compromiso.</p>
+
+      <form class="modal__form" id="demoForm" onsubmit="submitDemoForm(event)">
+        <div class="modal__field">
+          <label class="modal__label" for="demo-nombre">Tu nombre</label>
+          <input class="modal__input" id="demo-nombre" type="text" placeholder="Nombre y apellidos" required>
+        </div>
+        <div class="modal__field">
+          <label class="modal__label" for="demo-sindicato">Sindicato</label>
+          <input class="modal__input" id="demo-sindicato" type="text" placeholder="Nombre del sindicato" required>
+        </div>
+        <div class="modal__field">
+          <label class="modal__label" for="demo-email">Tu email</label>
+          <input class="modal__input" id="demo-email" type="email" placeholder="correo@sindicato.com" required>
+        </div>
+        <div class="modal__field">
+          <label class="modal__label" for="demo-mensaje">Mensaje (opcional)</label>
+          <textarea class="modal__textarea" id="demo-mensaje" placeholder="¿Algo que quieras contarnos?"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--large modal__submit"
+          style="width:100%; justify-content:center;">
+          <i class="ph ph-paper-plane-right"></i> Enviar solicitud
+        </button>
+        <p class="modal__note">Te escribiremos a tu email desde contacto@afiliaapp.com</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>

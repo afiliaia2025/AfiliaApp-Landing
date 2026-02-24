@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <!-- SEO -->
+    <title>Planes y Precios — AfiliaApp</title>
+    <meta name="description"
+        content="Elige el plan perfecto para tu sindicato. Desde 0€ con Freemium hasta Premium con IA incluida. Sin desarrollo, sin permanencias largas.">
+    <meta name="keywords"
+        content="precios app sindical, planes sindicato, app afiliados precios, SaaS sindicatos, AfiliaApp planes">
+    <meta name="author" content="AfiliaApp">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Planes y Precios — AfiliaApp">
+    <meta property="og:description"
+        content="Elige el plan perfecto para tu sindicato. Desde 0€ con Freemium hasta Premium con IA incluida.">
+    <meta property="og:image" content="https://afiliaia.com/images/moviles.webp">
+    <meta property="og:url" content="https://afiliaia.com/planes.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- PWA / Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="AfiliaApp">
+    <meta name="theme-color" content="#0A0E1A">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo64.webp">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ===== PLANES PAGE SPECIFIC ===== */
+        .planes-hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .planes-hero .subtitle {
+            max-width: 600px;
+            margin: 16px auto 0;
+        }
+
+        /* --- Comparison Table --- */
+        .comparison {
+            margin-top: 80px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 16px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+        }
+
+        .comparison-table th {
+            font-weight: 700;
+            color: var(--text-primary);
+            padding-bottom: 16px;
+            border-bottom: 2px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 250px;
+        }
+
+        .comparison-table th.col-freemium {
+            color: var(--text-muted);
+        }
+
+        .comparison-table th.col-basico {
+            color: var(--text-secondary);
+        }
+
+        .comparison-table th.col-estandar {
+            color: var(--orange);
+        }
+
+        .comparison-table th.col-premium {
+            color: var(--orange);
+            font-weight: 800;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .comparison-table .check {
+            color: var(--orange);
+            font-size: 1.1rem;
+        }
+
+        .comparison-table .cross {
+            color: #e74c3c;
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table .limit {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .comparison-table .category-row td {
+            padding-top: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.15);
+        }
+
+        /* Premium IA highlight */
+        .ia-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 107, 0, 0.15);
+            color: var(--orange);
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Comparison toggle (desplegable) */
+        .comparison-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+            padding: 14px 28px;
+            background: rgba(255, 107, 0, 0.08);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 100px;
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+
+        .comparison-toggle:hover {
+            background: rgba(255, 107, 0, 0.15);
+            border-color: rgba(255, 107, 0, 0.4);
+        }
+
+        .comparison-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .comparison-toggle.open i {
+            transform: rotate(180deg);
+        }
+
+        .comparison-table-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .comparison-table-wrapper.open {
+            max-height: 2000px;
+        }
+
+        /* Responsive comparison table */
+        .comparison-table-wrapper.open {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 768px) {
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 8px;
+                font-size: 0.75rem;
+            }
+
+            .pricing__grid--3,
+            .pricing__grid--4 {
+                grid-template-columns: 1fr !important;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .pricing__grid--3 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pricing__grid--4 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__logo">
+                <img src="images/logo64.webp" alt="AfiliaApp Logo"
+                    style="width: 36px; height: 36px; border-radius: 8px;">
+                <div class="navbar__logo-text">
+                    <span>Afilia</span><span>App</span>
+                </div>
+            </a>
+
+            <div class="navbar__links" id="navLinks">
+                <a href="index.html">Inicio</a>
+                <a href="index.html#beneficios">Beneficios</a>
+                <a href="index.html#como-funciona">Cómo funciona</a>
+                <a href="#planes" class="active">Planes</a>
+            </div>
+
+            <div class="navbar__cta">
+                <a href="https://wa.me/34634427730?text=Hola%20soy%20[Nombre]%20del%20sindicato%20[XXX].%20Quiero%20info."
+                    target="_blank" rel="noopener"
+                    style="color: #25D366; font-size: 1.4rem; display: flex; align-items: center; margin-right: 12px;"
+                    title="WhatsApp">
+                    <i class="ph ph-whatsapp-logo"></i>
+                </a>
+                <a href="#" onclick="openDemoModal(event)" class="btn btn--primary btn--small">Solicitar demo</a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="planes-hero" id="planes">
+        <div class="container">
+            <h1 class="headline headline--xl fade-in">Tu sindicato digital<br><span class="text-orange">desde 0€</span>
+            </h1>
+            <p class="subtitle fade-in delay-1">Sin coste de desarrollo. Sin permanencia larga. Paga solo por lo que
+                necesitas.<br>
+                <strong style="color: var(--orange);">Cuantos más afiliados, más barato por persona.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== PRICING CARDS ========== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="pricing__grid pricing__grid--4">
+
+                <!-- FREEMIUM -->
+                <div class="pricing-card fade-in delay-1">
+                    <h3 class="pricing-card__name">Freemium</h3>
+                    <p class="pricing-card__tagline">Solo quiero decir que tengo una app</p>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__amount">0€</span>
+                        <span class="pricing-card__period">/mes</span>
+                    </div>
+                    <p class="pricing-card__note">Sin tarjeta. Sin compromiso.</p>
+                    <p class="pricing-card__desc">Lo esencial para empezar. Tu app, tu marca, presencia digital mínima
+                        para tu
+                        sindicato.</p>
+                    <div class="pricing-card__features">
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>App con tu marca (logo + colores)</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Hasta 50 afiliados</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>3 avisos push / mes</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>4 noticias / mes</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Normativa en PDF (lectura)</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>FAQ: 1 sección / 10 preguntas</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Contacto general</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>1 administrador</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Soporte por email</span>
+                        </div>
+
+                    </div>
+                    <a href="https://wa.me/34634427730?text=Hola%20soy%20[Nombre]%20del%20sindicato%20[XXX].%20Quiero%20empezar%20con%20Freemium."
+                        class="btn btn--outline pricing-card__btn" target="_blank" rel="noopener">Empezar gratis</a>
+                </div>
+
+                <!-- BÁSICO -->
+                <div class="pricing-card fade-in delay-2">
+                    <h3 class="pricing-card__name">Básico</h3>
+                    <p class="pricing-card__tagline">Para sindicatos que dan el primer paso</p>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__amount">0,20€</span>
+                        <span class="pricing-card__period">/afiliado/mes</span>
+                    </div>
+                    <p class="pricing-card__note">Compromiso mínimo: 3 meses</p>
+                    <p class="pricing-card__desc">Lo esencial para operar: comunicar, identificar y gestionar tu
+                        afiliación sin grandes compromisos.</p>
+                    <div class="pricing-card__features">
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>App con tu marca (logo + colores)</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Hasta 300 afiliados</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>8 avisos push / mes</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>6 noticias / mes</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Normativa en PDF (lectura)</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>FAQ: 2 secciones / 20 preguntas</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Carné digital con QR</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Import CSV</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>1 admin + 1 delegado</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Soporte por email</span>
+                        </div>
+                    </div>
+                    <a href="#" onclick="openDemoModal(event)" class="btn btn--outline pricing-card__btn">Solicitar
+                        acceso</a>
+                </div>
+
+                <!-- ESTÁNDAR (Featured) -->
+                <div class="pricing-card pricing-card--featured fade-in delay-3">
+                    <div class="pricing-card__badge">⭐ Más popular</div>
+                    <h3 class="pricing-card__name">Estándar</h3>
+                    <p class="pricing-card__tagline">Para sindicatos que quieren funcionar de verdad</p>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__amount">0,30€</span>
+                        <span class="pricing-card__period">/afiliado/mes</span>
+                    </div>
+                    <p class="pricing-card__note">Compromiso mínimo: 3 meses</p>
+                    <p class="pricing-card__desc">Todo lo que necesitas para comunicar, gestionar y organizar tu
+                        sindicato
+                        digitalmente.</p>
+                    <div class="pricing-card__features">
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Todo lo del Freemium</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Afiliados ilimitados</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>15 avisos push / mes</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>10 noticias / mes</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Segmentación por grupo/ciudad</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Alta y baja digital</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Turnos en lectura (7 días)</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Carné digital con QR</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Certificado de afiliación PDF</span>
+                        </div>
+
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Beneficios y ventajas</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>FAQ: 3 secciones / 30 preguntas</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>1 admin + 2 delegados</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Analítica por sección</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Export CSV <span style="color:var(--text-muted);font-size:0.78rem;">(bajo
+                                    solicitud)</span></span>
+                        </div>
+
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Chat con delegado</span>
+                        </div>
+                    </div>
+                    <a href="#" onclick="openDemoModal(event)" class="btn btn--primary pricing-card__btn">Solicitar
+                        acceso</a>
+                </div>
+
+                <!-- PREMIUM -->
+                <div class="pricing-card fade-in delay-4"
+                    style="border-color: rgba(255,107,0,0.4); box-shadow: 0 0 20px rgba(255,107,0,0.08);">
+                    <div class="pricing-card__badge"
+                        style="background: linear-gradient(135deg, #FF5500, #FF8C00); color: #fff;">💎 Lo mejor</div>
+                    <h3 class="pricing-card__name" style="color: var(--orange);">Premium</h3>
+                    <p class="pricing-card__tagline">Tu sindicato al máximo nivel</p>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__amount">0,45€</span>
+                        <span class="pricing-card__period">/afiliado/mes</span>
+                    </div>
+                    <p class="pricing-card__note">Compromiso mínimo: 3 meses</p>
+                    <p class="pricing-card__desc">Organización profesional con IA, chat, votaciones y delegados
+                        ilimitados.</p>
+                    <div class="pricing-card__features">
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Todo lo del Estándar</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Turnos mensual + informe anual</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Segmentación avanzada (turno/categoría)</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Encuestas internas + resultados live</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Votaciones formales con cierre</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Chat afiliado ↔ delegado por áreas</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>FAQ ilimitado</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Delegados ilimitados por zona</span>
+                        </div>
+
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Analítica avanzada + export</span>
+                        </div>
+                        <div class="pricing-card__feature">
+                            <i class="ph ph-check pricing-card__feature-icon"></i>
+                            <span>Soporte prioritario</span>
+                        </div>
+                        <div class="pricing-card__feature" style="margin-top: 8px;">
+                            <i class="ph ph-robot pricing-card__feature-icon"></i>
+                            <span><span class="ia-badge"><i class="ph ph-robot"></i> IA incluida</span> Asistente IA
+                                Normativa — responde preguntas sobre tu convenio citando artículos exactos</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/34634427730?text=Hola%20soy%20[Nombre]%20del%20sindicato%20[XXX].%20Quiero%20el%20plan%20Premium."
+                        class="btn btn--outline pricing-card__btn" target="_blank" rel="noopener">Solicitar acceso</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMPARISON TABLE ========== -->
+    <section class="section section--alt comparison">
+        <div class="container">
+            <div class="section__header fade-in">
+                <h2 class="headline headline--lg">Compara los <span class="text-orange">planes</span></h2>
+                <p class="subtitle">Todo lo que incluye cada plan, de un vistazo.</p>
+            </div>
+
+            <div class="comparison-toggle fade-in delay-1" id="comparisonToggle" onclick="toggleComparison()">
+                <i class="ph ph-caret-down"></i>
+                <span>Ver comparación completa</span>
+            </div>
+
+            <div class="comparison-table-wrapper" id="comparisonWrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="col-freemium">Freemium</th>
+                            <th class="col-basico">Básico</th>
+                            <th class="col-estandar">Estándar</th>
+                            <th class="col-premium">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- BASICS -->
+                        <tr class="category-row">
+                            <td colspan="4">Básico</td>
+                        </tr>
+                        <tr>
+                            <td>App con tu marca (logo + colores)</td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Afiliados</td>
+                            <td class="limit">Hasta 50</td>
+                            <td class="limit">Hasta 300</td>
+                            <td>Ilimitados</td>
+                            <td>Ilimitados</td>
+                        </tr>
+
+                        <!-- COMMUNICATION -->
+                        <tr class="category-row">
+                            <td colspan="4">Comunicación</td>
+                        </tr>
+                        <tr>
+                            <td>Avisos push</td>
+                            <td class="limit">3/mes</td>
+                            <td class="limit">8/mes</td>
+                            <td class="limit">15/mes</td>
+                            <td>Ilimitados</td>
+                        </tr>
+                        <tr>
+                            <td>Noticias</td>
+                            <td class="limit">4/mes</td>
+                            <td class="limit">6/mes</td>
+                            <td class="limit">10/mes</td>
+                            <td>Ilimitadas</td>
+                        </tr>
+                        <tr>
+                            <td>Segmentación</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td class="limit">Grupo / ciudad</td>
+                            <td>Avanzada (turno/categoría)</td>
+                        </tr>
+                        <tr>
+                            <td>Chat afiliado ↔ delegado</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td>Por áreas</td>
+                        </tr>
+
+                        <!-- DOCS -->
+                        <tr class="category-row">
+                            <td colspan="4">Documentos y normativa</td>
+                        </tr>
+                        <tr>
+                            <td>Normativa en PDF</td>
+                            <td class="limit">Lectura</td>
+                            <td class="limit">Lectura</td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>FAQ</td>
+                            <td class="limit">1 secc. / 10 preg.</td>
+                            <td class="limit">2 secc. / 20 preg.</td>
+                            <td class="limit">3 secc. / 30 preg.</td>
+                            <td>Ilimitado</td>
+                        </tr>
+                        <tr>
+                            <td>Certificado de afiliación PDF</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+
+                        <!-- MANAGEMENT -->
+                        <tr class="category-row">
+                            <td colspan="4">Gestión</td>
+                        </tr>
+                        <tr>
+                            <td>Alta y baja digital</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Carné digital con QR</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Turnos</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td class="limit">Lectura 7 días</td>
+                            <td>Mensual + informe anual</td>
+                        </tr>
+                        <tr>
+                            <td>Beneficios y ventajas</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Import CSV</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                            <td><i class="ph ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Export CSV</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td class="limit">Bajo solicitud</td>
+                            <td><i class="ph ph-check check"></i> Automático</td>
+                        </tr>
+
+                        <!-- PARTICIPATION -->
+                        <tr class="category-row">
+                            <td colspan="4">Participación</td>
+                        </tr>
+                        <tr>
+                            <td>Encuestas internas</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td>+ resultados live</td>
+                        </tr>
+                        <tr>
+                            <td>Votaciones formales</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td>Con cierre y acta</td>
+                        </tr>
+
+                        <!-- TEAM -->
+                        <tr class="category-row">
+                            <td colspan="4">Equipo y soporte</td>
+                        </tr>
+                        <tr>
+                            <td>Administradores</td>
+                            <td class="limit">1</td>
+                            <td class="limit">1 admin + 1 delegado</td>
+                            <td class="limit">1 admin + 2 delegados</td>
+                            <td>Ilimitados por zona</td>
+                        </tr>
+                        <tr>
+                            <td>Analítica</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td class="limit">Por sección</td>
+                            <td>Avanzada + export</td>
+                        </tr>
+                        <tr>
+                            <td>Soporte</td>
+                            <td class="limit">Email</td>
+                            <td class="limit">Email</td>
+                            <td class="limit">Chat directo</td>
+                            <td>Prioritario</td>
+                        </tr>
+
+                        <!-- IA -->
+                        <tr class="category-row">
+                            <td colspan="4">Inteligencia Artificial</td>
+                        </tr>
+                        <tr>
+                            <td>IA Normativa — Asistente para convenio colectivo</td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-x cross"></i></td>
+                            <td><i class="ph ph-check check"></i> <span class="ia-badge"><i class="ph ph-robot"></i>
+                                    Incluido</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CALCULADORA ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="pricing-extra fade-in">
+                <h3 class="headline headline--md" style="text-align:center;">¿Cuánto <span
+                        class="text-orange">pagarías</span>?
+                </h3>
+                <p class="subtitle" style="text-align: center; margin-bottom: 24px;">Precios calculados con descuentos
+                    por
+                    tramos progresivos.</p>
+                <div class="pricing-calculator">
+                    <div class="calc-row calc-header" style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;">
+                        <span class="calc-cell calc-cell--label">Afiliados</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">Básico</span>
+                        <span class="calc-cell calc-cell--est">Estándar</span>
+                        <span class="calc-cell calc-cell--prem">Premium</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;">
+                        <span class="calc-cell calc-cell--label">100</span>
+                        <span class="calc-cell"
+                            style="color:var(--text-secondary);text-align:center;"><strong>20€</strong>/mes
+                            <em>(0,20€/afil)</em></span>
+                        <span class="calc-cell calc-cell--est"><strong>30€</strong>/mes <em>(0,30€/afil)</em></span>
+                        <span class="calc-cell calc-cell--prem"><strong>45€</strong>/mes <em>(0,45€/afil)</em></span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;">
+                        <span class="calc-cell calc-cell--label">200</span>
+                        <span class="calc-cell"
+                            style="color:var(--text-secondary);text-align:center;"><strong>40€</strong>/mes
+                            <em>(0,20€/afil)</em></span>
+                        <span class="calc-cell calc-cell--est"><strong>60€</strong>/mes <em>(0,30€/afil)</em></span>
+                        <span class="calc-cell calc-cell--prem"><strong>90€</strong>/mes <em>(0,45€/afil)</em></span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;">
+                        <span class="calc-cell calc-cell--label">500</span>
+                        <span class="calc-cell" style="color:var(--text-muted);text-align:center;"><em>cap
+                                300</em></span>
+                        <span class="calc-cell calc-cell--est"><strong>150€</strong>/mes <em>(0,30€/afil)</em></span>
+                        <span class="calc-cell calc-cell--prem"><strong>225€</strong>/mes <em>(0,45€/afil)</em></span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;">
+                        <span class="calc-cell calc-cell--label">1.000</span>
+                        <span class="calc-cell" style="color:var(--text-muted);text-align:center;"><em>cap
+                                300</em></span>
+                        <span class="calc-cell calc-cell--est"><strong>275€</strong>/mes <em>(0,28€/afil)</em></span>
+                        <span class="calc-cell calc-cell--prem"><strong>425€</strong>/mes <em>(0,43€/afil)</em></span>
+                    </div>
+                </div>
+                <p class="why__note" style="margin-top: 20px;"><em>Menos que un café por afiliado al mes. Menos que la
+                        factura
+                        de fotocopias del convenio.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DESCUENTOS POR VOLUMEN ========== -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="pricing-extra fade-in">
+                <h3 class="headline headline--md" style="text-align:center;">Descuentos por <span
+                        class="text-orange">volumen</span></h3>
+                <p class="subtitle" style="text-align: center; margin-bottom: 24px;">Los precios se aplican por tramos
+                    progresivos, no por tarifa plana.</p>
+                <div class="pricing-calculator">
+                    <div class="calc-row calc-header" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">Tramo</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">Básico</span>
+                        <span class="calc-cell calc-cell--est">Estándar</span>
+                        <span class="calc-cell calc-cell--prem">Premium</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">0 – 300 afiliados</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">0,20 €/afil <span
+                                style="font-size:0.75rem;color:var(--text-muted);">(precio único)</span></span>
+                        <span class="calc-cell calc-cell--est">0,30 €/afil</span>
+                        <span class="calc-cell calc-cell--prem">0,45 €/afil</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">301 – 500 afiliados</span>
+                        <span class="calc-cell" style="color:var(--text-muted);text-align:center;"><em>no
+                                disponible</em></span>
+                        <span class="calc-cell calc-cell--est">0,30 €/afil</span>
+                        <span class="calc-cell calc-cell--prem">0,45 €/afil</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">501 – 1.000 afiliados</span>
+                        <span class="calc-cell" style="color:var(--text-muted);text-align:center;"><em>no
+                                disponible</em></span>
+                        <span class="calc-cell calc-cell--est">0,25 €/afil</span>
+                        <span class="calc-cell calc-cell--prem">0,40 €/afil</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">&gt; 1.000 afiliados</span>
+                        <span class="calc-cell" style="color:var(--text-muted);text-align:center;"><em>no
+                                disponible</em></span>
+                        <span class="calc-cell calc-cell--est">0,20 €/afil</span>
+                        <span class="calc-cell calc-cell--prem">0,35 €/afil</span>
+                    </div>
+                </div>
+                <p class="why__note" style="margin-top: 20px;"><em>Ejemplo: 1.200 afiliados en Estándar → 500×0,30 +
+                        500×0,25 +
+                        200×0,20 = 315€/mes (0,26€/afil)</em></p>
+                <p
+                    style="text-align: center; color: var(--orange); font-weight: 600; font-size: 0.85rem; margin-top: 8px;">
+                    &gt; 2.000 afiliados → Contacta con nosotros para un precio personalizado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROGRAMA DE REFERIDOS ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="pricing-extra pricing-extra--referidos fade-in">
+                <h3 class="headline headline--md" style="text-align:center;">Programa de <span
+                        class="text-orange">referidos</span></h3>
+                <p class="subtitle" style="text-align: center; margin-bottom: 24px;">Recomienda AfiliaApp a otro
+                    sindicato y recibe una recompensa según tu plan.</p>
+
+                <div class="pricing-calculator" style="margin-bottom: 20px;">
+                    <div class="calc-row calc-header" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">Beneficio</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">Básico</span>
+                        <span class="calc-cell calc-cell--est">Estándar</span>
+                        <span class="calc-cell calc-cell--prem">Premium</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">Descuento por referido</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">1 mes
+                            gratis</span>
+                        <span class="calc-cell calc-cell--est"><strong>50€</strong>/año</span>
+                        <span class="calc-cell calc-cell--prem"><strong>100€</strong>/año</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">Máx. referidos/año</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">1</span>
+                        <span class="calc-cell calc-cell--est">3</span>
+                        <span class="calc-cell calc-cell--prem">3</span>
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
+                        <span class="calc-cell calc-cell--label">Ahorro máximo</span>
+                        <span class="calc-cell" style="color:var(--text-secondary);text-align:center;">1 mes
+                            gratis</span>
+                        <span class="calc-cell calc-cell--est"><strong>150€</strong>/año</span>
+                        <span class="calc-cell calc-cell--prem"><strong>300€</strong>/año</span>
+                    </div>
+                </div>
+
+                <div class="referidos__list">
+                    <div class="referidos__item">
+                        <i class="ph ph-handshake" style="color: var(--orange); font-size: 1.4rem; flex-shrink: 0;"></i>
+                        <span>El sindicato referido siempre obtiene su <strong>primer mes gratis</strong>,
+                            independientemente del plan que contrate.</span>
+                    </div>
+                    <div class="referidos__item">
+                        <i class="ph ph-info" style="color: var(--orange); font-size: 1.4rem; flex-shrink: 0;"></i>
+                        <span>Los descuentos se aplican en la siguiente factura mensual tras confirmar el
+                            referido.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA FINAL ========== -->
+    <section class="section section--alt cta-final" id="contacto">
+        <div class="container" style="text-align: center;">
+            <h2 class="headline headline--lg fade-in">¿Empezamos con <span class="text-orange">tu sindicato</span>?</h2>
+            <p class="subtitle fade-in delay-1" style="max-width: 550px; margin: 16px auto 40px;">Activa tu app en menos
+                de
+                48h. Sin desarrollo. Sin sorpresas.</p>
+            <div class="cta-final__buttons fade-in delay-2">
+                <a href="https://wa.me/34634427730?text=Hola%20soy%20[Nombre]%20del%20sindicato%20[XXX].%20Quiero%20una%20demo%20de%20AfilIA."
+                    class="btn btn--primary btn--large" target="_blank" rel="noopener">
+                    <i class="ph ph-whatsapp-logo"></i> WhatsApp
+                </a>
+                <a href="#" onclick="openDemoModal(event)" class="btn btn--outline btn--large">
+                    <i class="ph ph-play-circle"></i> Solicitar demo
+                </a>
+            </div>
+            <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.85rem;">
+                <i class="ph ph-phone" style="color: var(--orange);"></i>
+                O llámanos al <a href="tel:+34634427730"
+                    style="color: var(--orange); font-weight: 600; text-decoration: none;">634 427 730</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__left">
+                    <i class="ph ph-lightning" style="color: var(--orange); font-size: 1.2rem;"></i>
+                    <span>© 2026 AfiliaApp. Todos los derechos reservados.</span>
+                </div>
+                <div class="footer__links">
+                    <a href="/privacidad">Política de privacidad</a>
+                    <a href="mailto:contacto@afiliaapp.com">contacto@afiliaapp.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <!-- ========== DEMO MODAL ========== -->
+    <div class="modal-overlay" id="demoModal" onclick="handleModalOverlayClick(event)">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal__close" onclick="closeDemoModal()" aria-label="Cerrar">
+                <i class="ph ph-x"></i>
+            </button>
+            <h2 class="modal__title" id="modalTitle">Solicitar <span>demo</span></h2>
+            <p class="modal__subtitle">Te respondemos en menos de 24h. Sin compromiso.</p>
+
+            <form class="modal__form" id="demoForm" onsubmit="submitDemoForm(event)">
+                <div class="modal__field">
+                    <label class="modal__label" for="demo-nombre">Tu nombre</label>
+                    <input class="modal__input" id="demo-nombre" type="text" placeholder="Nombre y apellidos" required>
+                </div>
+                <div class="modal__field">
+                    <label class="modal__label" for="demo-sindicato">Sindicato</label>
+                    <input class="modal__input" id="demo-sindicato" type="text" placeholder="Nombre del sindicato"
+                        required>
+                </div>
+                <div class="modal__field">
+                    <label class="modal__label" for="demo-email">Tu email</label>
+                    <input class="modal__input" id="demo-email" type="email" placeholder="correo@sindicato.com"
+                        required>
+                </div>
+                <div class="modal__field">
+                    <label class="modal__label" for="demo-mensaje">Mensaje (opcional)</label>
+                    <textarea class="modal__textarea" id="demo-mensaje"
+                        placeholder="¿Algo que quieras contarnos?"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--large modal__submit"
+                    style="width:100%; justify-content:center;">
+                    <i class="ph ph-paper-plane-right"></i> Enviar solicitud
+                </button>
+                <p class="modal__note">Te escribiremos a tu email desde contacto@afiliaapp.com</p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleComparison() {
+            const wrapper = document.getElementById('comparisonWrapper');
+            const toggle = document.getElementById('comparisonToggle');
+            const isOpen = wrapper.classList.toggle('open');
+            toggle.classList.toggle('open', isOpen);
+            toggle.querySelector('span').textContent = isOpen ? 'Ocultar comparación' : 'Ver comparación completa';
+        }
+    </script>
+</body>
+
+</html>
