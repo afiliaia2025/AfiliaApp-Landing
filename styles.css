@@ -1560,7 +1560,10 @@ ul {
 
   .hero__ctas .btn {
     justify-content: center;
-    min-width: 220px;
+    text-align: center;
+    white-space: normal;
+    max-width: 90vw;
+    line-height: 1.3;
   }
 
   .benefits__grid {
@@ -1616,7 +1619,10 @@ ul {
 
   .hero__ctas .btn {
     justify-content: center;
-    min-width: 220px;
+    text-align: center;
+    white-space: normal;
+    max-width: 90vw;
+    line-height: 1.3;
   }
 
   .cta-final__buttons {
