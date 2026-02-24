@@ -1603,18 +1603,6 @@ ul {
   .hero__phone-mockup img {
     max-width: 300px;
   }
-
-  /* Prevent any element from overflowing */
-  * {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  img,
-  video,
-  iframe {
-    max-width: 100%;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1629,6 +1617,8 @@ ul {
 
   .hero__ctas .btn {
     justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .cta-final__buttons {
