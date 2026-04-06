@@ -1,0 +1,64 @@
+{
+    "hosting": [
+        {
+            "site": "dm5pjt8gerbva43uzwnvqxclk3vtsc",
+            "public": ".",
+            "cleanUrls": true,
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "headers": [
+                {
+                    "source": "**/*.@(js|css)",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "public, max-age=3600"
+                        }
+                    ]
+                },
+                {
+                    "source": "**/*.html",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "site": "afiliaapp-landing",
+            "public": ".",
+            "cleanUrls": true,
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "headers": [
+                {
+                    "source": "**/*.@(js|css)",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "public, max-age=3600"
+                        }
+                    ]
+                },
+                {
+                    "source": "**/*.html",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

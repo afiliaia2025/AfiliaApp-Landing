@@ -6,14 +6,24 @@
 const WA_NUMBER = '34634427730';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Enable CSS animations only when JS is ready (progressive enhancement)
+    document.documentElement.classList.add('js-anim');
+
     initNavbar();
-    initScrollAnimations();
+    try { initScrollAnimations(); } catch (e) { showAllAnimated(); }
     initCounterAnimations();
     initFAQ();
     initMobileMenu();
     initSmoothScroll();
     initWhatsAppLinks();
 });
+
+/* --- Fallback: make everything visible if animation JS fails --- */
+function showAllAnimated() {
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+        el.classList.add('visible');
+    });
+}
 
 /* --- Navbar Scroll Effect --- */
 function initNavbar() {
@@ -77,7 +87,10 @@ function initCounterAnimations() {
 }
 
 function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-count'), 10);
+    const raw = element.getAttribute('data-count');
+    if (!raw && raw !== '0') return;               // no numeric target — keep static text
+    const target = parseInt(raw, 10);
+    if (isNaN(target)) return;                      // safety check
     const suffix = element.getAttribute('data-suffix') || '';
     const prefix = element.getAttribute('data-prefix') || '';
     const duration = 800;

@@ -197,58 +197,73 @@ ul {
   margin-right: auto;
 }
 
-/* --- Animations --- */
-.fade-in {
+/* --- Animations (progressive enhancement) --- */
+/* Elements are VISIBLE by default. JS adds .js-anim to <html>, 
+   which enables the hidden→visible entrance animations.
+   If JS fails or is blocked, everything remains visible. */
+
+html.js-anim .fade-in {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in.visible {
+html.js-anim .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.fade-in-left {
+html.js-anim .fade-in-left {
   opacity: 0;
   transform: translateX(-40px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in-left.visible {
+html.js-anim .fade-in-left.visible {
   opacity: 1;
   transform: translateX(0);
 }
 
-.fade-in-right {
+html.js-anim .fade-in-right {
   opacity: 0;
   transform: translateX(40px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in-right.visible {
+html.js-anim .fade-in-right.visible {
   opacity: 1;
   transform: translateX(0);
 }
 
-.delay-1 {
+html.js-anim .delay-1 {
   transition-delay: 0.1s;
 }
 
-.delay-2 {
+html.js-anim .delay-2 {
   transition-delay: 0.2s;
 }
 
-.delay-3 {
+html.js-anim .delay-3 {
   transition-delay: 0.3s;
 }
 
-.delay-4 {
+html.js-anim .delay-4 {
   transition-delay: 0.4s;
 }
 
-.delay-5 {
+html.js-anim .delay-5 {
   transition-delay: 0.5s;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html.js-anim .fade-in,
+  html.js-anim .fade-in-left,
+  html.js-anim .fade-in-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 @keyframes pulse-glow {
