@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScroll();
     initWhatsAppLinks();
+    initPricingCalculator();
 });
 
 /* --- Fallback: make everything visible if animation JS fails --- */
@@ -248,4 +249,71 @@ function initWhatsAppLinks() {
         const href = link.getAttribute('href');
         link.setAttribute('href', href.replace(/wa\.me\/\d+/, 'wa.me/' + WA_NUMBER));
     });
+}
+
+/* --- Pricing Sub-calculator --- */
+function initPricingCalculator() {
+    const inputAffiliates = document.getElementById('calc-affiliates');
+    const selectPlan = document.getElementById('calc-plan');
+    const displayTotal = document.getElementById('calc-total');
+    const displayBreakdown = document.getElementById('calc-breakdown');
+
+    if (!inputAffiliates || !selectPlan || !displayTotal || !displayBreakdown) return;
+
+    const rates = {
+        'Básico': [ { max: 200, rate: 0.30 }, { max: 500, rate: 0.25 }, { max: 1000, rate: 0.22 }, { max: Infinity, rate: 0.20 } ],
+        'Estándar': [ { max: 200, rate: 0.45 }, { max: 500, rate: 0.39 }, { max: 1000, rate: 0.33 }, { max: Infinity, rate: 0.29 } ],
+        'Premium': [ { max: 200, rate: 0.59 }, { max: 500, rate: 0.49 }, { max: 1000, rate: 0.45 }, { max: Infinity, rate: 0.39 } ]
+    };
+
+    function calculate() {
+        let count = parseInt(inputAffiliates.value, 10);
+        if (isNaN(count) || count < 0) count = 0;
+
+        if (count === 0) {
+            displayTotal.textContent = "0,00 €";
+            displayBreakdown.innerHTML = "Añade al menos 1 afiliado.";
+            return;
+        }
+
+        const planName = selectPlan.value;
+        const planRates = rates[planName];
+        let total = 0;
+        let remaining = count;
+        let previousMax = 0;
+        let steps = [];
+
+        for (let i = 0; i < planRates.length; i++) {
+            const tier = planRates[i];
+            const tierSize = tier.max - previousMax;
+            const inThisTier = Math.min(remaining, tierSize);
+            
+            if (inThisTier > 0) {
+                const stepCost = inThisTier * tier.rate;
+                total += stepCost;
+                
+                // Format price 0.30, 0.45, etc
+                const rateFormatted = tier.rate.toFixed(2).replace('.', ',');
+                steps.push(`<strong>${inThisTier}</strong> unids. a ${rateFormatted}€`);
+                
+                remaining -= inThisTier;
+            }
+            previousMax = tier.max;
+            if (remaining <= 0) break;
+        }
+
+        displayTotal.textContent = total.toFixed(2).replace('.', ',') + " €";
+        
+        if (count > 2000) {
+            displayBreakdown.innerHTML = "Gran volumen: pídenos oferta personalizada.<br>" + steps.join(" + ");
+        } else {
+            displayBreakdown.innerHTML = steps.join("<br>+ ");
+        }
+    }
+
+    inputAffiliates.addEventListener('input', calculate);
+    selectPlan.addEventListener('change', calculate);
+    
+    // Initial run
+    calculate();
 }

@@ -711,9 +711,32 @@
                 <h3 class="headline headline--md" style="text-align:center;">¿Cuánto <span
                         class="text-orange">pagarías</span>?
                 </h3>
-                <p class="subtitle" style="text-align: center; margin-bottom: 24px;">Precios calculados con descuentos
-                    por
-                    tramos progresivos.</p>
+                <p class="subtitle" style="text-align: center; margin-bottom: 24px;">Calcula tu cuota mensual exacta según el tamaño de tu afiliación.</p>
+                
+                <!-- Interactive Calculator Box -->
+                <div style="background: var(--bg-secondary); border: 1px solid rgba(255,107,0,0.2); border-radius: 16px; padding: 24px; max-width: 650px; margin: 0 auto 32px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px;">
+                        <div>
+                            <label for="calc-affiliates" style="display: block; font-weight: 600; color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Número de afiliados:</label>
+                            <input type="number" id="calc-affiliates" min="1" value="200" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,107,0,0.3); background: rgba(10,14,26,0.6); color: #fff; font-size: 1.1rem; outline: none; font-family: Inter, sans-serif;">
+                        </div>
+                        <div>
+                            <label for="calc-plan" style="display: block; font-weight: 600; color: #fff; margin-bottom: 8px; font-size: 0.9rem;">Plan elegido:</label>
+                            <select id="calc-plan" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,107,0,0.3); background: rgba(10,14,26,0.6); color: #fff; font-size: 1.1rem; outline: none; font-family: Inter, sans-serif;">
+                                <option value="Básico">Básico</option>
+                                <option value="Estándar" selected>Estándar</option>
+                                <option value="Premium">Premium</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="padding: 20px; background: rgba(255,107,0,0.05); border-radius: 12px; text-align: center; border: 1px dashed rgba(255,107,0,0.2);">
+                        <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Cuota Mensual Total</div>
+                        <div id="calc-total" style="font-size: 2.8rem; font-weight: 800; color: var(--orange); margin-bottom: 12px; line-height: 1;">90,00 €</div>
+                        <div id="calc-breakdown" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; min-height: 24px;">200 a 0,45€</div>
+                    </div>
+                </div>
+
+                <h4 class="headline headline--sm" style="text-align:center; margin-bottom: 16px;">Ejemplos precalculados</h4>
                 <div class="pricing-calculator">
                     <div class="calc-row calc-header" style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;">
                         <span class="calc-cell calc-cell--label">Afiliados</span>
