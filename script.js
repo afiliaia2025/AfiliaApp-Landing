@@ -295,7 +295,7 @@ function initPricingCalculator() {
                 
                 // Format price 0.30, 0.45, etc
                 const rateFormatted = tier.rate.toFixed(2).replace('.', ',');
-                steps.push(`<strong>${inThisTier}</strong> unids. a ${rateFormatted}€`);
+                steps.push(`<strong>${inThisTier}</strong> afiliados a ${rateFormatted}€`);
                 
                 remaining -= inThisTier;
             }
