@@ -254,11 +254,12 @@ function initWhatsAppLinks() {
 /* --- Pricing Sub-calculator --- */
 function initPricingCalculator() {
     const inputAffiliates = document.getElementById('calc-affiliates');
+    const sliderAffiliates = document.getElementById('calc-slider');
     const selectPlan = document.getElementById('calc-plan');
     const displayTotal = document.getElementById('calc-total');
     const displayBreakdown = document.getElementById('calc-breakdown');
 
-    if (!inputAffiliates || !selectPlan || !displayTotal || !displayBreakdown) return;
+    if (!inputAffiliates || !sliderAffiliates || !selectPlan || !displayTotal || !displayBreakdown) return;
 
     const rates = {
         'Básico': [ { max: 200, rate: 0.30 }, { max: 500, rate: 0.25 }, { max: 1000, rate: 0.22 }, { max: Infinity, rate: 0.20 } ],
@@ -311,9 +312,11 @@ function initPricingCalculator() {
         }
     }
 
-    inputAffiliates.addEventListener('input', calculate);
+    inputAffiliates.addEventListener('input', (e) => { let val = parseInt(e.target.value, 10); if (!isNaN(val)) { if (val > parseInt(sliderAffiliates.max)) sliderAffiliates.max = val.toString(); sliderAffiliates.value = val; } calculate(); }); 
+    sliderAffiliates.addEventListener('input', (e) => { inputAffiliates.value = e.target.value; calculate(); });
     selectPlan.addEventListener('change', calculate);
     
     // Initial run
     calculate();
 }
+
