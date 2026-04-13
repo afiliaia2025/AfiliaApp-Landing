@@ -1,4 +1,4 @@
-/* ========================================
+﻿/* ========================================
    AFILIAAPP LANDING — INTERACTIONS
    ======================================== */
 
@@ -224,24 +224,40 @@ document.addEventListener('keydown', (e) => {
 
 function submitDemoForm(e) {
     e.preventDefault();
-    const nombre = document.getElementById('demo-nombre')?.value.trim() || '';
+    const nombre    = document.getElementById('demo-nombre')?.value.trim()    || '';
     const sindicato = document.getElementById('demo-sindicato')?.value.trim() || '';
-    const email = document.getElementById('demo-email')?.value.trim() || '';
-    const mensaje = document.getElementById('demo-mensaje')?.value.trim() || '';
+    const email     = document.getElementById('demo-email')?.value.trim()     || '';
+    const mensaje   = document.getElementById('demo-mensaje')?.value.trim()   || '';
 
-    const subject = encodeURIComponent(`Solicitud de demo — ${sindicato}`);
-    const body = encodeURIComponent(
-        `Hola,\n\nOs contacto para solicitar una demo de AfiliaApp.\n\n` +
-        `Nombre: ${nombre}\n` +
-        `Sindicato: ${sindicato}\n` +
-        `Email de contacto: ${email}\n\n` +
-        (mensaje ? `Mensaje: ${mensaje}\n\n` : '') +
-        `Un saludo.`
-    );
+    const btn = document.querySelector('#demoModal .modal__submit-btn');
+    const originalText = btn ? btn.textContent : '';
+    if (btn) { btn.textContent = 'Enviando...'; btn.disabled = true; }
 
-    window.location.href = `mailto:contacto@afiliaapp.com?subject=${subject}&body=${body}`;
-    setTimeout(closeDemoModal, 500);
+    emailjs.send('service_xy20be9', 'b1mnkpl', { nombre, sindicato, email, mensaje })
+    .then(() => {
+        closeDemoModal();
+        ['demo-nombre','demo-sindicato','demo-email','demo-mensaje'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+        const toast = document.createElement('div');
+        toast.textContent = 'Solicitud enviada. Te contactaremos pronto.';
+        Object.assign(toast.style, {
+            position:'fixed', bottom:'24px', left:'50%', transform:'translateX(-50%)',
+            background:'#1a8f4e', color:'#fff', padding:'14px 24px', borderRadius:'10px',
+            fontSize:'15px', fontWeight:'600', zIndex:'9999', boxShadow:'0 4px 20px rgba(0,0,0,.2)'
+        });
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 4000);
+    })
+    .catch((err) => {
+        console.error('EmailJS error:', err);
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+        alert('No se pudo enviar el mensaje. Por favor, escribenos a contacto@afiliaapp.com');
+    });
 }
+
 
 /* --- WhatsApp Links (centralized via WA_NUMBER) --- */
 function initWhatsAppLinks() {
